@@ -1,26 +1,42 @@
 :root {
     --menu-bar-width: 60px;
     --menu-bar-height: 10px;
+    --main-color: hsl(334, 66%, 55%);
 }
 
+/* div blokjes zichtbaar maken */
 #menu {
-    background-color: #D84282;
-    position: relative;
+    /* met de eerste 3 zetten we een balk, want zonder content in index krijg je niks te zien*/
+    background-color: var(--main-color);
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
     margin: 100px;
+    position: relative;
+    border: none;
 }
 
+/*transitie maken*/
+#menu:hover {
+    border: 10px solid;
+    transition: border 2s ease-in-out;
+}
+
+/*pseudo-elementen before en after*/
 #menu::before,
 #menu::after {
-    background-color: #D84282;
-    display: block;
-    content: "";
+    /*met de eerste 3 zetten  we een balk, zonder content in index krijg je niks te zien*/
+    background-color: var(--main-color);
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
+    /*pseodo-element moet altijd een content hebben om zichtbaar te zijn*/
+    content: "";
+    /*zet deze er altijd bij*/
+    display: block;
+    /*  zonder absolute/relative zitten de blokjes overelkaarheen*/
     position: absolute;
 }
 
+/*hiermee zet je de balken onder en boven op de juiste plek*/
 #menu::before {
     left: 0;
     top: -20px;
@@ -30,4 +46,3 @@
     left: 0;
     top: 20px;
 }
-
