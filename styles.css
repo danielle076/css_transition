@@ -10,15 +10,8 @@
     background-color: var(--main-color);
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
-    margin: 100px;
+    margin: 50px;
     position: relative;
-    border: none;
-}
-
-/*transitie maken*/
-#menu:hover {
-    border: 10px solid;
-    transition: border 2s ease-in-out;
 }
 
 /*pseudo-elementen before en after*/
@@ -28,11 +21,11 @@
     background-color: var(--main-color);
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
-    /*pseodo-element moet altijd een content hebben om zichtbaar te zijn*/
+    /*pseudo-element moet altijd een content hebben om zichtbaar te zijn*/
     content: "";
     /*zet deze er altijd bij*/
     display: block;
-    /*  zonder absolute/relative zitten de blokjes overelkaarheen*/
+    /*  zonder absolute/relative zitten de blokjes over elkaar heen*/
     position: absolute;
 }
 
@@ -44,5 +37,22 @@
 
 #menu::after {
     left: 0;
-    top: 20px;
+    bottom: -20px;
+}
+
+/*code voor het kruisje*/
+#menu:hover {
+    background-color: white;
+}
+
+#menu:hover::before {
+    top: 0px;
+    transform: rotate(45deg);
+    transition: .3s ease-in-out;
+}
+
+#menu:hover::after {
+    bottom: 0px;
+    transform: rotate(-45deg);
+    transition: .3s ease-in-out;
 }
